@@ -19,9 +19,16 @@ public class CruddemoApplication {
 
 		return runner -> {
 			// createStudent(studentDAO);
-			createMultipleStudents(studentDAO);
+			// createMultipleStudents(studentDAO);
+			readStudent(studentDAO);
 		};
 
+	}
+
+	private void readStudent(StudentDAO studentDAO) {
+		System.out.println("Reading student with ID: 1");
+		Student student = studentDAO.findById(1);
+		System.out.println("Found student: " + student);
 	}
 
 	private void createMultipleStudents(StudentDAO studentDAO) {
@@ -43,7 +50,6 @@ public class CruddemoApplication {
 	private void createStudent(StudentDAO studentDAO) {
 
 		// create the student object
-
 		System.out.println("Creating new student object...");
 		Student tempStudent = new Student("Antonio", "Espinoza", "antonio@gmail.com");
 
@@ -53,6 +59,5 @@ public class CruddemoApplication {
 
 		// display id of the saved student
 		System.out.println("saved student. Generated id: " + tempStudent.getId());
-
 	}
 }
