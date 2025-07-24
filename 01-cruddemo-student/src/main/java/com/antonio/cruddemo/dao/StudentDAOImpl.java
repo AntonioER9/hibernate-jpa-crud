@@ -42,4 +42,31 @@ public class StudentDAOImpl implements StudentDAO {
                 .setParameter("lastName", lastName)
                 .getResultList();
     }
+
+    @Override
+    @Transactional
+    public void update(Student theStudent) {
+        // This method is not strictly necessary as the entity manager will
+        // automatically
+        // track changes to the entity and update it when the transaction commits.
+        // However, if you want to explicitly update, you can use:
+        entityManager.merge(theStudent);
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(Integer id) {
+        Student student = entityManager.find(Student.class, id);
+        if (student != null) {
+            entityManager.remove(student);
+        }
+    }
+
+    @Override
+    @Transactional
+    public int deleteAll() {
+        int numRowsDeleted = entityManager.createQuery("DELETE FROM Student").executeUpdate();
+        return numRowsDeleted;
+    }
+
 }
