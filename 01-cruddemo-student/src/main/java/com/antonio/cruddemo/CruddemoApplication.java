@@ -2,6 +2,9 @@ package com.antonio.cruddemo;
 
 import com.antonio.cruddemo.dao.StudentDAO;
 import com.antonio.cruddemo.entity.Student;
+
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,9 +23,19 @@ public class CruddemoApplication {
 		return runner -> {
 			// createStudent(studentDAO);
 			// createMultipleStudents(studentDAO);
-			readStudent(studentDAO);
+			// readStudent(studentDAO);
+			findAllStudents(studentDAO);
 		};
 
+	}
+
+	private void findAllStudents(StudentDAO studentDAO) {
+		List<Student> students = studentDAO.findAll();
+		// System.out.println("Found students: " + students);
+
+		for (Student student : students) {
+			System.out.println("Student: " + student);
+		}
 	}
 
 	private void readStudent(StudentDAO studentDAO) {
