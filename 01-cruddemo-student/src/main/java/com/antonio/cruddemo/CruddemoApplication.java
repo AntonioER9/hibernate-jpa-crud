@@ -22,13 +22,13 @@ public class CruddemoApplication {
 
 		return runner -> {
 			// createStudent(studentDAO);
-			// createMultipleStudents(studentDAO);
+			createMultipleStudents(studentDAO);
 			// readStudent(studentDAO);
 			// findAllStudents(studentDAO);
 			// findByLastName(studentDAO);
 			// updateStudent(studentDAO);
 			// deleteStudent(studentDAO);
-			deleteAllStudents(studentDAO);
+			// deleteAllStudents(studentDAO);
 
 		};
 
